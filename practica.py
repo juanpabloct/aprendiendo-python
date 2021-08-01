@@ -1,21 +1,16 @@
-from typing import TextIO
+import json
+from os import close
 
+file = 'Datos.json'
+datos: list = []
+try:
+    datos = json.load(open(file, 'r'))
+except:
+    datos = []
+mes=input('Escribe un mes: ')
+dia=input('Escribe el dia: ')
+datos.append({'mes': mes, 'dia': dia})
 
-comida=['Helado', 'pollo', 'Pescado']
-print(comida)
-
-comida_favorita=input('Escribe tu comida Favorita: ')
-""" print('Desde aca inicia el for')
-for cuentame in comida:
-    if comida_favorita == cuentame:
-        print(f'Me gusta mucho el {comida_favorita}')
-    else:
-        print(f'No tenemos {comida_favorita}') """
-i=1
-text='hello'
-""" for zeta  in range(comida_favorita):
-    print('Hello' + str(zeta)) """
-
-for x in text:
-    print(x + str(i))
-    i+=1
+print(datos)
+subir = open(file, 'w')
+subir.write(json.dumps(datos)) 
